@@ -1,16 +1,23 @@
-# fan_playground
+# Click Miner
 
-A new Flutter project.
+A Flutter-based idle-mining game where you tap to earn “sats,” upgrade GPUs, auto-mine, freeze heat, watch ads for boosts, and unlock achievements.
+
+## Features
+
+- Manual tapping to mine sats  
+- GPU shop, cooling upgrades, system overclock  
+- Auto-tap mode (30 s)  
+- 2× reward boost (30 s)  
+- Heat/freeze temperature mechanic  
+- Banner & interstitial ads via AdMob  
+- Idle earnings for re-entrants  
+- Achievements page  
+- Light/dark theme support  
+- Cash-out dialog stub  
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+1. **Clone the repo**  
+   ```bash
+   git clone https://github.com/<your-username>/click_miner.git
+   cd click_miner
