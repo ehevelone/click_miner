@@ -1,0 +1,55 @@
+// android/build.gradle
+
+// 1) Root buildscript: set Kotlin to 1.6.10
+buildscript {
+    ext.kotlin_version = '1.6.10'
+
+    repositories {
+        google()
+        mavenCentral()
+    }
+
+    dependencies {
+        classpath 'com.android.tools.build:gradle:7.2.2'
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        // NOTE: do NOT add app dependencies here
+    }
+}
+
+// 2) All projects see standard plugin repositories
+allprojects {
+    repositories {
+        google()
+        mavenCentral()
+    }
+}
+
+// 3) Force **every** subproject to reuse our Kotlin plugin version
+subprojects {
+    buildscript {
+        // inherit the version
+        ext.kotlin_version = rootProject.ext.kotlin_version
+
+        repositories {
+            google()
+            mavenCentral()
+        }
+
+        dependencies {
+            // re-declare the Kotlin Gradle plugin so plugins don't pull in 1.4.32
+            classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        }
+    }
+}
+
+// 4) (Optional) move gradle outputs outside android folder
+rootProject.buildDir = "../build"
+subprojects {
+    project.buildDir = "${rootProject.buildDir}/${project.name}"
+    project.evaluationDependsOn(":app")
+}
+
+// 5) Standard clean task
+tasks.register("clean", Delete) {
+    delete rootProject.buildDir
+}
